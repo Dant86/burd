@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>BURD</title>
+		<link rel="stylesheet" type="text/css" href="../styles/posts.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="../styles/posts.js"></script>
+	</head>
+	<body>
+		<header>
+			<div id="logo_img">
+				<img src="../images/dove.png">
+			</div>
+		</header>
+		<a href="/posts/new">
+			<button type="button">
+				Create your own post
+			</button>
+		</a>
+		<form method="post" action="/users/<%=@user.id%>">
+			<input type="hidden" name="_method" value="delete">
+			<input type="submit" name="logout">
+		</form>
+		<!-- 
+			This is the body of a post
+		!-->
+		<%@posts.each do |post|%>
+
+			<a href="/posts/<%=post.id%>">
+				<div class="post">
+					<div id="top_of_post">
+						<a href="/users/<%=post.user_id%>">
+							<p><%=User.find(post.user_id).username%></p>
+						</a>
+					</div>
+					<%if post.post_img_url%>
+						<div id="img_body">
+							<img src=<%=post.post_img_url%>>
+						</div>
+					<%end%>
+					<div id="post_body">
+						<p><%=post.post_body%></p>
+					</div>
+					<%if post.user_id == session[:user_id]%>
+						<a href="/posts/<%=post.id%>/edit">
+							<button type="button">
+								Edit Post
+							</button>
+						</a>
+					<%end%>
+				</div>
+				<p><%=@post.likes.count%> likes</p>
+				<p><%=@post.comments.count%> comments</p>
+				<form method="post" action="/likes/<%=@post.id%>">
+					<input id = "likes" type="submit" name="Drop a like!">
+				</form>
+				<form method="post" action="/comments/<%=@post.id%>">
+					<input type="text" name="body" placeholder="comment body">
+					<input type="submit" name="drop a comment!">
+				</form>
+			</a>
+
+		<%end%>
+	</body>
+</html>

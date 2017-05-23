@@ -1,0 +1,11 @@
+<form method="post" action="/posts/<%=@post.id%>">
+	<input type="hidden" name="_method" value="patch">
+	<input type="text" name="body" value=<%=@post.post_body%>>
+	<input type="text" name="url" value=<%=@post.post_img_url%>>
+	<input type="submit" name="Edit photo">
+</form>
+
+<form method="post" action="/posts/<%=@post.id%>">
+	<input type="hidden" name="_method" value="delete">
+	<input type="submit" name="Delete photo">
+</form>

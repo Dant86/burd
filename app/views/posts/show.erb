@@ -1,0 +1,35 @@
+<head>
+	<link rel="stylesheet" type="text/css" href="../styles/posts.css">
+</head>
+
+<a href="/posts">
+	<button type="button">
+		See all posts
+	</button>
+</a>
+
+<a href="/posts/<%=@post.id%>">
+	<div class="post">
+		<div id="top_of_post">
+			<a href="/users/<%=@post.user_id%>">
+				<p><%=User.find(@post.user_id).username%></p>
+			</a>
+		</div>
+		<%if @post.post_img_url%>
+			<div id="img_body">
+				<img src=<%=@post.post_img_url%>>
+			</div>
+		<%end%>
+		<div id="post_body">
+			<p><%=@post.post_body%></p>
+		</div>
+		<%if @post.user_id == session[:user_id]%>
+			<a href="/posts/<%=@post.id%>/edit">
+				<button type="button">
+					Edit Post
+				</button>
+			</a>
+		<%end%>
+		<p><%=@post.likes.count%> likes</p>
+	</div>
+</a>

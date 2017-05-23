@@ -1,0 +1,9 @@
+<%if @error%>
+	<p><%=@error%></p>
+<%end%>
+
+<form method="post" action="/sessions">
+	<input type="text" name="username">
+	<input type="password" name="password">
+	<input type="submit" value="Sign in">
+</form>
