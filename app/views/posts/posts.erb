@@ -49,15 +49,7 @@
 						</a>
 					<%end%>
 				</div>
-				<p><%=@post.likes.count%> likes</p>
-				<p><%=@post.comments.count%> comments</p>
-				<form method="post" action="/likes/<%=@post.id%>">
-					<input id = "likes" type="submit" name="Drop a like!">
-				</form>
-				<form method="post" action="/comments/<%=@post.id%>">
-					<input type="text" name="body" placeholder="comment body">
-					<input type="submit" name="drop a comment!">
-				</form>
+			
 			</a>
 
 		<%end%>
