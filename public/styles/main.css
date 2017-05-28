@@ -1,0 +1,26 @@
+body {
+	background-color: rgba(73,216,255,.3);
+}
+
+img {
+	width: 500px;
+	height: 500px;
+}
+
+#img {
+	width: 500px;
+	height: 500px;
+	margin-left: 550px;
+}
+
+button {
+	display: inline-block;
+	width: 100px;
+	background-color: rgba(53,190,255,.3);
+}
+
+#left_button {
+	display: inline-block;
+	margin-left: 650px;
+	margin-right: 100px;
+}

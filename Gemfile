@@ -21,3 +21,7 @@ gem 'bcrypt'
 gem 'cloudinary'
 
 gem 'dotenv'
+
+gem 'geocoder'
+
+gem 'geokit-rails'
