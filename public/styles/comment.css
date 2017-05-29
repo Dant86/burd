@@ -1,24 +1,24 @@
-* {
-	text-decoration: none;
-	font-family: 'Raleway', sans-serif;
-}
-
-body {
-	background-color: #E6F3F7;
-}
-
-p {
+h3 {
 	text-align: center;
 }
 
-.post {
+#text {
+	margin-left: 700px;
+}
+
+#like {
+	margin-left: 790px;
+}
+
+input {
+	display: inline-block;
+	text-align: center;
+}
+
+.comment {
 	text-align: center;
 	margin-left: 330px;
 	width: 60%;
 	border-radius: 10px;
 	background-color: rgba(53,190,255,.3);
-}
-
-.post div {
-	width: 100%;
 }

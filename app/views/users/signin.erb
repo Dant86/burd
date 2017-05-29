@@ -1,9 +1,24 @@
+<head>
+	<link rel="stylesheet" type="text/css" href="../styles/posts.css">
+	<link rel="stylesheet" type="text/css" href="../styles/signin.css">
+</head>
+
+
+<header>
+	<div id="logo_img">
+		<img src="../images/dove.png">
+	</div>
+</header>
+
+<br>
+<br>
+
 <%if @error%>
 	<p><%=@error%></p>
 <%end%>
 
 <form method="post" action="/sessions">
-	<input type="text" name="username">
+	<input type="text" name="username" id="leftmost">
 	<input type="password" name="password">
 	<input type="submit" value="Sign in">
 </form>

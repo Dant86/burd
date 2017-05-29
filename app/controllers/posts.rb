@@ -48,10 +48,13 @@ end
 
 post '/likes/:id' do
 	@like = Like.create(post_id: params[:id].to_i, user_id: session[:user_id].to_i)
+	redirect '/posts'
 end
 
 post '/comments/:id' do
 	@comment = Comment.create(post_id: params[:id].to_i, user_id: session[:user_id].to_i, comment_body: params[:body])
+	p @comment
+	redirect '/posts'
 end
 
 

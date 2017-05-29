@@ -1,35 +1,90 @@
 <head>
+	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="../styles/posts.css">
+	<link rel="stylesheet" type="text/css" href="../styles/sidebar.css">
+	<link rel="stylesheet" type="text/css" href="../styles/comment.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script src="../sidebar.js"></script>
 </head>
-
-<a href="/posts">
-	<button type="button">
-		See all posts
-	</button>
-</a>
-
-<a href="/posts/<%=@post.id%>">
-	<div class="post">
-		<div id="top_of_post">
-			<a href="/users/<%=@post.user_id%>">
-				<p><%=User.find(@post.user_id).username%></p>
-			</a>
-		</div>
-		<%if @post.post_img_url%>
-			<div id="img_body">
-				<img src=<%=@post.post_img_url%>>
-			</div>
-		<%end%>
-		<div id="post_body">
-			<p><%=@post.post_body%></p>
-		</div>
-		<%if @post.user_id == session[:user_id]%>
-			<a href="/posts/<%=@post.id%>/edit">
+<div id="sidebar">
+	<ul>
+		<li>
+			<a href="/posts/new">
 				<button type="button">
-					Edit Post
+					Create a post
 				</button>
 			</a>
-		<%end%>
-		<p><%=@post.likes.count%> likes</p>
+		</li>
+		<li>
+			<a href="/users/<%=session[:user_id]%>">
+				<button type="button">
+					See your posts
+				</button>
+			</a>
+		</li>
+		<li>
+			<a href="/posts">
+				<button type="button">
+					See all posts
+				</button>
+			</a>
+		</li>
+		<li>
+			<form method="post" action="/users/<%=session[:user_id]%>">
+				<input type="hidden" name="_method" value="delete">
+				<input type="submit" value="logout">
+			</form>
+		</li>
+	</ul>
+	<div id="sidebar-btn">
+		<span></span>
+		<span></span>
+		<span></span>
 	</div>
-</a>
+</div>
+<header>
+	<div id="logo_img">
+		<img src="../images/dove.png">
+	</div>
+</header>
+
+<div class="post">
+	<div id="top_of_post">
+		<a href="/users/<%=@post.user_id%>">
+			<p><%=User.find(@post.user_id).username%></p>
+		</a>
+	</div>
+	<%if @post.post_img_url%>
+		<div id="img_body">
+			<img src=<%=@post.post_img_url%>>
+		</div>
+	<%end%>
+	<div id="post_body">
+		<p><%=@post.post_body%></p>
+	</div>
+	<%if @post.user_id == session[:user_id]%>
+		<a href="/posts/<%=@post.id%>/edit">
+			<button type="button">
+				Edit Post
+			</button>
+		</a>
+	<%end%>
+	<p><%=@post.likes.count%> likes</p>
+</div>
+
+<form method="post" action="/comments/<%=@post.id%>">
+	<input type="text" name="body" value="Body" required id="text">
+	<input type="submit" value="Add a comment" id="submit">
+</form>
+
+<form method="post" action="/likes/<%=@post.id%>">
+	<input type="submit" value="Drop a Like" id="like">
+</form>
+
+<h3><strong>Comments</strong></h3>
+<%@post.comments.each do |comment|%>
+	<div class="comment">
+		<p><%=User.find(comment.user_id).username%></p>
+		<p><%=comment.comment_body%></p>
+	</div>
+<%end%>
