@@ -1,4 +1,4 @@
-require 'geokit-rails'
+# require 'geokit-rails'
 
 #Main page
 get '/' do 
