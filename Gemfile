@@ -22,3 +22,4 @@ gem 'cloudinary'
 
 gem 'dotenv'
 
+gem 'sendgrid-ruby'

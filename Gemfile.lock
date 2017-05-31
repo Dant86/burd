@@ -43,6 +43,10 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
+    ruby_http_client (3.1.0)
+    sendgrid-ruby (5.0.0)
+      ruby_http_client (~> 3.0)
+      sinatra (>= 1.4.7, < 3)
     sinatra (2.0.0)
       mustermann (~> 1.0)
       rack (~> 2.0)
@@ -74,6 +78,7 @@ DEPENDENCIES
   dotenv
   pg
   rake
+  sendgrid-ruby
   sinatra
   sinatra-contrib
 
