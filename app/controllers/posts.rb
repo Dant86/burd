@@ -52,7 +52,7 @@ delete '/posts/:id' do
 end
 
 post '/likes/:id' do
-	# @like = Like.create(post_id: params[:id].to_i, user_id: session[:user_id].to_i)
+	@like = Like.create(post_id: params[:id].to_i, user_id: session[:user_id].to_i)
 	# @receiver_email = User.find(Post.find(params[:id].to_i).user_id).email
 	# @from = Email.new(email: User.find(session[:user_id].to_i).email)
 	# @to = Email.new(email: @receiver_email)
@@ -65,7 +65,7 @@ post '/likes/:id' do
 end
 
 post '/comments/:id' do
-	# @comment = Comment.create(post_id: params[:id].to_i, user_id: session[:user_id].to_i, comment_body: params[:body])
+	@comment = Comment.create(post_id: params[:id].to_i, user_id: session[:user_id].to_i, comment_body: params[:body])
 	# @like = Like.create(post_id: params[:id].to_i, user_id: session[:user_id].to_i)
 	# @receiver_email = User.find(Post.find(params[:id].to_i).user_id).email
 	# @from = Email.new(email: User.find(session[:user_id].to_i).email)
