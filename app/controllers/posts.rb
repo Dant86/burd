@@ -52,29 +52,29 @@ delete '/posts/:id' do
 end
 
 post '/likes/:id' do
-	@like = Like.create(post_id: params[:id].to_i, user_id: session[:user_id].to_i)
-	@receiver_email = User.find(Post.find(params[:id].to_i).user_id).email
-	@from = Email.new(email: User.find(session[:user_id].to_i).email)
-	@to = Email.new(email: @receiver_email)
-	@subject = 'BURD NOTIFICATION: A user liked your post!'
-	@content = Content.new(type: 'text/plain', value: User.find(session[:user_id].to_i).username+' liked your post')
-	@mail = Mail.new(@from, @subject, @to, @content)
-	@sg = SendGrid::API.new(api_key: ENV["SENDGRID_API_KEY"])
-	@response = @sg.client.mail._('send').post(request_body: @mail.to_json)
+	# @like = Like.create(post_id: params[:id].to_i, user_id: session[:user_id].to_i)
+	# @receiver_email = User.find(Post.find(params[:id].to_i).user_id).email
+	# @from = Email.new(email: User.find(session[:user_id].to_i).email)
+	# @to = Email.new(email: @receiver_email)
+	# @subject = 'BURD NOTIFICATION: A user liked your post!'
+	# @content = Content.new(type: 'text/plain', value: User.find(session[:user_id].to_i).username+' liked your post')
+	# @mail = Mail.new(@from, @subject, @to, @content)
+	# @sg = SendGrid::API.new(api_key: ENV["SENDGRID_API_KEY"])
+	# @response = @sg.client.mail._('send').post(request_body: @mail.to_json)
 	redirect '/posts'
 end
 
 post '/comments/:id' do
-	@comment = Comment.create(post_id: params[:id].to_i, user_id: session[:user_id].to_i, comment_body: params[:body])
-	@like = Like.create(post_id: params[:id].to_i, user_id: session[:user_id].to_i)
-	@receiver_email = User.find(Post.find(params[:id].to_i).user_id).email
-	@from = Email.new(email: User.find(session[:user_id].to_i).email)
-	@to = Email.new(email: @receiver_email)
-	@subject = 'BURD NOTIFICATION: A user commented on your post!'
-	@content = Content.new(type: 'text/plain', value: User.find(session[:user_id].to_i).username+' commented on your post')
-	@mail = Mail.new(@from, @subject, @to, @content)
-	@sg = SendGrid::API.new(api_key: ENV["SENDGRID_API_KEY"])
-	@response = @sg.client.mail._('send').post(request_body: @mail.to_json)
+	# @comment = Comment.create(post_id: params[:id].to_i, user_id: session[:user_id].to_i, comment_body: params[:body])
+	# @like = Like.create(post_id: params[:id].to_i, user_id: session[:user_id].to_i)
+	# @receiver_email = User.find(Post.find(params[:id].to_i).user_id).email
+	# @from = Email.new(email: User.find(session[:user_id].to_i).email)
+	# @to = Email.new(email: @receiver_email)
+	# @subject = 'BURD NOTIFICATION: A user commented on your post!'
+	# @content = Content.new(type: 'text/plain', value: User.find(session[:user_id].to_i).username+' commented on your post')
+	# @mail = Mail.new(@from, @subject, @to, @content)
+	# @sg = SendGrid::API.new(api_key: ENV["SENDGRID_API_KEY"])
+	# @response = @sg.client.mail._('send').post(request_body: @mail.to_json)
 	redirect '/posts'
 end
 
